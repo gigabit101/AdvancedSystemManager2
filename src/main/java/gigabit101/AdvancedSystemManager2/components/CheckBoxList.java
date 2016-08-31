@@ -3,6 +3,7 @@ package gigabit101.AdvancedSystemManager2.components;
 
 import gigabit101.AdvancedSystemManager2.CollisionHelper;
 import gigabit101.AdvancedSystemManager2.interfaces.GuiManager;
+import gigabit101.AdvancedSystemManager2.settings.Settings;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -35,7 +36,12 @@ public class CheckBoxList {
 
                 gui.drawTexture(checkBox.getX(), checkBox.getY(), CHECK_BOX_SRC_X + srcCheckBoxX * CHECK_BOX_SIZE, CHECK_BOX_SRC_Y + srcCheckBoxY * CHECK_BOX_SIZE, CHECK_BOX_SIZE, CHECK_BOX_SIZE);
                 if (checkBox.getName() != null) {
-                    gui.drawSplitString(checkBox.getName(), checkBox.getX() + CHECK_BOX_TEXT_X, checkBox.getY() + CHECK_BOX_TEXT_Y, checkBox.getTextWidth(), 0.7F, 0x404040);
+                    int colour;
+                    if(Settings.isDarkMode())
+                        colour = 0x904040;
+                    else
+                        colour = 0x404040;
+                    gui.drawSplitString(checkBox.getName(), checkBox.getX() + CHECK_BOX_TEXT_X, checkBox.getY() + CHECK_BOX_TEXT_Y, checkBox.getTextWidth(), 0.7F, colour);
                 }
             }
         }

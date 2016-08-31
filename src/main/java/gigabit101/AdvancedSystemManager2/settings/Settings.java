@@ -1,6 +1,5 @@
 package gigabit101.AdvancedSystemManager2.settings;
 
-
 import gigabit101.AdvancedSystemManager2.tiles.TileEntityManager;
 import gigabit101.AdvancedSystemManager2.network.DataReader;
 import gigabit101.AdvancedSystemManager2.network.DataWriter;
@@ -10,10 +9,9 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-
-public final class Settings {
-
-    private static final String NAME = "StevesFactoryManagerInside";
+public final class Settings
+{
+    private static final String NAME = "AdvancedSystemManager2Inside";
     private static final int VERSION = 1;
     private static boolean autoCloseGroup;
     private static boolean largeOpenHitBox;
@@ -24,17 +22,20 @@ public final class Settings {
     private static boolean autoBlacklist;
     private static boolean enlargeInterfaces;
     private static boolean priorityMoveFirst;
+    private static boolean darkMode;
 
     @SideOnly(Side.CLIENT)
     public static void openMenu(TileEntityManager manager) {
         manager.specialRenderer = new SettingsScreen(manager);
     }
 
-    public static void load() {
+    public static void load()
+    {
         DataReader dr = FileHelper.read(NAME);
-
-        if (dr != null) {
-            try {
+        if (dr != null)
+        {
+            try
+            {
                 int version = dr.readByte();
 
                 autoCloseGroup = dr.readBoolean();
@@ -45,20 +46,28 @@ public final class Settings {
                 autoSide = dr.readBoolean();
                 autoBlacklist = dr.readBoolean();
                 enlargeInterfaces = dr.readBoolean();
+                darkMode = dr.readBoolean();
                 if (version >= 1) {
                     priorityMoveFirst = dr.readBoolean();
                 }
-            }catch (Exception ignored){
+            }
+            catch (Exception ignored)
+            {
                 loadDefault();
-            }finally {
+            }
+            finally
+            {
                 dr.close();
             }
-        }else{
+        }
+        else
+        {
             loadDefault();
         }
     }
 
-    private static void loadDefault() {
+    private static void loadDefault()
+    {
         autoCloseGroup = false;
         largeOpenHitBox = false;
         largeOpenHitBoxMenu = false;
@@ -67,12 +76,15 @@ public final class Settings {
         autoSide = false;
         autoBlacklist = false;
         enlargeInterfaces = false;
+        darkMode = false;
     }
 
-    private static void save() {
+    private static void save()
+    {
         DataWriter dw = FileHelper.getWriter(NAME);
 
-        if (dw != null) {
+        if (dw != null)
+        {
             dw.writeByte(VERSION);
 
             dw.writeBoolean(autoCloseGroup);
@@ -84,6 +96,7 @@ public final class Settings {
             dw.writeBoolean(autoBlacklist);
             dw.writeBoolean(enlargeInterfaces);
             dw.writeBoolean(priorityMoveFirst);
+            dw.writeBoolean(darkMode);
 
             FileHelper.close(dw);
         }
@@ -93,7 +106,8 @@ public final class Settings {
         return autoCloseGroup;
     }
 
-    public static void setAutoCloseGroup(boolean autoCloseGroup) {
+    public static void setAutoCloseGroup(boolean autoCloseGroup)
+    {
         Settings.autoCloseGroup = autoCloseGroup;
         save();
     }
@@ -102,7 +116,8 @@ public final class Settings {
         return largeOpenHitBox;
     }
 
-    public static void setLargeOpenHitBox(boolean largeOpenHitBox) {
+    public static void setLargeOpenHitBox(boolean largeOpenHitBox)
+    {
         Settings.largeOpenHitBox = largeOpenHitBox;
         save();
     }
@@ -111,7 +126,8 @@ public final class Settings {
         return largeOpenHitBoxMenu;
     }
 
-    public static void setLargeOpenHitBoxMenu(boolean largeOpenHitBoxMenu) {
+    public static void setLargeOpenHitBoxMenu(boolean largeOpenHitBoxMenu)
+    {
         Settings.largeOpenHitBoxMenu = largeOpenHitBoxMenu;
         save();
     }
@@ -120,7 +136,8 @@ public final class Settings {
         return quickGroupOpen;
     }
 
-    public static void setQuickGroupOpen(boolean quickGroupOpen) {
+    public static void setQuickGroupOpen(boolean quickGroupOpen)
+    {
         Settings.quickGroupOpen = quickGroupOpen;
         save();
     }
@@ -129,7 +146,8 @@ public final class Settings {
         return commandTypes;
     }
 
-    public static void setCommandTypes(boolean commandTypes) {
+    public static void setCommandTypes(boolean commandTypes)
+    {
         Settings.commandTypes = commandTypes;
         save();
     }
@@ -138,7 +156,8 @@ public final class Settings {
         return autoSide;
     }
 
-    public static void setAutoSide(boolean autoSide) {
+    public static void setAutoSide(boolean autoSide)
+    {
         Settings.autoSide = autoSide;
         save();
     }
@@ -147,27 +166,36 @@ public final class Settings {
         return autoBlacklist;
     }
 
-    public static void setAutoBlacklist(boolean autoBlacklist) {
+    public static void setAutoBlacklist(boolean autoBlacklist)
+    {
         Settings.autoBlacklist = autoBlacklist;
         save();
     }
 
-    public static boolean isLimitless(TileEntityManager manager) {
+    public static boolean isLimitless(TileEntityManager manager)
+    {
         IBlockState state = manager.getWorld().getBlockState(manager.getPos());
         return (state.getBlock().getMetaFromState(state) & 1) != 0;
     }
 
-    public static void setLimitless(TileEntityManager manager, boolean limitless) {
-        if (manager.getWorld().isRemote) {
+    public static void setLimitless(TileEntityManager manager, boolean limitless)
+    {
+        if (manager.getWorld().isRemote)
+        {
             DataWriter dw = PacketHandler.getWriterForServerActionPacket();
             dw.writeBoolean(limitless);
             PacketHandler.sendDataToServer(dw);
-        }else{
+        }
+        else
+        {
             IBlockState state = manager.getWorld().getBlockState(manager.getPos());
             int meta = state.getBlock().getMetaFromState(state);
-            if (limitless) {
+            if (limitless)
+            {
                 meta |= 1;
-            }else{
+            }
+            else
+            {
                 meta &= ~1;
             }
             manager.getWorld().setBlockState(manager.getPos(), state.getBlock().getStateFromMeta(meta), 3);
@@ -178,7 +206,8 @@ public final class Settings {
         return enlargeInterfaces;
     }
 
-    public static void setEnlargeInterfaces(boolean enlargeInterfaces) {
+    public static void setEnlargeInterfaces(boolean enlargeInterfaces)
+    {
         Settings.enlargeInterfaces = enlargeInterfaces;
         save();
     }
@@ -187,8 +216,17 @@ public final class Settings {
         return priorityMoveFirst;
     }
 
-    public static void setPriorityMoveFirst(boolean priorityMoveFirst) {
+    public static void setPriorityMoveFirst(boolean priorityMoveFirst)
+    {
         Settings.priorityMoveFirst = priorityMoveFirst;
+    }
+
+    public static boolean isDarkMode() { return darkMode; }
+
+    public static void setDarkMode(boolean darkMode)
+    {
+        Settings.darkMode = darkMode;
+        save();
     }
 
     private Settings() {}

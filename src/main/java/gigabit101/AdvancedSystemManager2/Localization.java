@@ -337,6 +337,7 @@ public enum Localization
     LIMITLESS,
     ENLARGE_INTERFACES,
     AUTO_MOVE_FIRST,
+    DARK_MODE,
 
 
     GIVE_PERMISSION,

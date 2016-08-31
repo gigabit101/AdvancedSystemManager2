@@ -16,16 +16,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SideOnly(Side.CLIENT)
-public class SettingsScreen implements IInterfaceRenderer {
-
+public class SettingsScreen implements IInterfaceRenderer
+{
     private TileEntityManager manager;
     private List<Button> buttons;
 
-    public SettingsScreen(final TileEntityManager manager) {
+    public SettingsScreen(final TileEntityManager manager)
+    {
         this.manager = manager;
 
         buttons = new ArrayList<Button>();
-        buttons.add(new Button(493, 5, Localization.GO_BACK, 231, 12 * ComponentType.values().length + 1) {
+        buttons.add(new Button(493, 5, Localization.GO_BACK, 231, 12 * ComponentType.values().length + 1)
+        {
             @Override
             protected void onClick() {
                 manager.specialRenderer = null;
@@ -39,10 +41,11 @@ public class SettingsScreen implements IInterfaceRenderer {
     private static final int MARGIN_X = 30;
     private static final int START_Y = 20;
     private static final int MAX_Y = 250;
-    private abstract class CheckBoxSetting extends CheckBox {
-        private CheckBoxSetting(Localization name) {
+    private abstract class CheckBoxSetting extends CheckBox
+    {
+        private CheckBoxSetting(Localization name)
+        {
             super(name, getXAndGenerateY(name), currentY);
-
             setTextWidth(CHECK_BOX_WIDTH);
         }
 
@@ -50,7 +53,8 @@ public class SettingsScreen implements IInterfaceRenderer {
         public void onUpdate() {}
     }
 
-    private int getXAndGenerateY(Localization name) {
+    private int getXAndGenerateY(Localization name)
+    {
         currentY += offsetY;
 
         String str = name.toString();
@@ -59,7 +63,8 @@ public class SettingsScreen implements IInterfaceRenderer {
         int height = (int)((lines.size() + 1) * cachedGui.getFontHeight() * 0.7F);
         offsetY = height;
 
-        if (currentY + height > MAX_Y) {
+        if (currentY + height > MAX_Y)
+        {
             currentY = START_Y;
             currentX += CHECK_BOX_WIDTH + MARGIN_X;
         }
@@ -189,6 +194,14 @@ public class SettingsScreen implements IInterfaceRenderer {
             }
         });
 
+        checkBoxes.addCheckBox(new CheckBoxSetting(Localization.DARK_MODE) {
+            @Override
+            public void setValue(boolean val) {Settings.setDarkMode(val);}
+
+            @Override
+            public boolean getValue() {return Settings.isDarkMode();}
+        });
+
 
         currentX = START_SETTINGS_X;
         currentY = START_Y;
@@ -210,6 +223,8 @@ public class SettingsScreen implements IInterfaceRenderer {
                 return Minecraft.getMinecraft().thePlayer.capabilities.isCreativeMode;
             }
         });
+
+
     }
 
     @Override
@@ -217,10 +232,15 @@ public class SettingsScreen implements IInterfaceRenderer {
         if (cachedString == null || !localization.toString().equals(cachedString)) {
             addCheckboxes(gui);
         }
+        int colour;
+        if(Settings.isDarkMode())
+            colour = 0x904040;
+        else
+            colour = 0x404040;
 
-        gui.drawString(Localization.PREFERENCES.toString(), START_X - 2, 6, 0x404040);
+        gui.drawString(Localization.PREFERENCES.toString(), START_X - 2, 6, colour);
         if (Minecraft.getMinecraft().thePlayer.capabilities.isCreativeMode) {
-            gui.drawString(Localization.SETTINGS.toString(), START_SETTINGS_X - 2, 6, 0x404040);
+            gui.drawString(Localization.SETTINGS.toString(), START_SETTINGS_X - 2, 6, colour);
         }
         checkBoxes.draw(gui, mX, mY);
         for (Button button : buttons) {

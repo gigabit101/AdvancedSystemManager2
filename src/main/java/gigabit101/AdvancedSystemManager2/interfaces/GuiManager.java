@@ -3,6 +3,7 @@ package gigabit101.AdvancedSystemManager2.interfaces;
 import gigabit101.AdvancedSystemManager2.CollisionHelper;
 import gigabit101.AdvancedSystemManager2.Localization;
 import gigabit101.AdvancedSystemManager2.animation.AnimationController;
+import gigabit101.AdvancedSystemManager2.settings.Settings;
 import gigabit101.AdvancedSystemManager2.tiles.TileEntityManager;
 import gigabit101.AdvancedSystemManager2.components.FlowComponent;
 import gigabit101.AdvancedSystemManager2.network.DataBitHelper;
@@ -81,11 +82,19 @@ public class GuiManager extends GuiBase
         if (!useGreenScreen && !useBlueScreen && !usePinkScreen)
         {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+
             bindTexture(BACKGROUND_1);
+            if(Settings.isDarkMode())
+                GlStateManager.color(0.3F, 0.3F, 0.3F, 1.0F);
+
             drawTexture(0, 0, 0, 0, 256, 256);
 
             bindTexture(BACKGROUND_2);
+
             drawTexture(256, 0, 0, 0, 256, 256);
+            if(Settings.isDarkMode())
+                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+
         }
 
         x -= guiLeft;

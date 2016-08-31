@@ -2,6 +2,7 @@ package gigabit101.AdvancedSystemManager2;
 
 import gigabit101.AdvancedSystemManager2.init.ModBlocks;
 import gigabit101.AdvancedSystemManager2.components.ModItemHelper;
+import gigabit101.AdvancedSystemManager2.init.ModItems;
 import gigabit101.AdvancedSystemManager2.init.ModRecipes;
 import gigabit101.AdvancedSystemManager2.lib.ModInfo;
 import gigabit101.AdvancedSystemManager2.network.FileHelper;
@@ -33,6 +34,7 @@ public class AdvancedSystemManager2
     {
         packetHandler = NetworkRegistry.INSTANCE.newEventDrivenChannel(ModInfo.CHANNEL);
         ModBlocks.init();
+        ModItems.init();
         proxy.preInit();
         FileHelper.setConfigDir(event.getModConfigurationDirectory());
     }

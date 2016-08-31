@@ -369,6 +369,7 @@ gui.afm.AutoBlackList=Automatically select an empty blacklist for input commands
 gui.afm.Limitless=Remove all limits of this manager. Without this selected there's a limit of 511 commands, 1023 connected inventories and a max reach of 128 blocks. [Creative only]
 gui.afm.EnlargeInterfaces=Enlarge interfaces to fit the full screen, unless they do that already. (Interfaces are always made smaller to fit the screen regardless of this setting.)
 gui.afm.AutoMoveFirst=Set the default option for new crafting commands to prioritize movement.
+gui.afm.DarkMode=Set the gui to Dark Mode.
 
 # ======================================
 #		 ADVANCED RELAY INTERFACE
