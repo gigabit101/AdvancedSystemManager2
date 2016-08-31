@@ -400,9 +400,15 @@ gui.afm.PermissionCreative=Creative access
 gui.afm.PermissionInventory=Inventory access
 gui.afm.PermissionDenied=No access
 
+# ======================================
+#				ITEMS
+# ======================================
+item.afm.remoteaccessor.name=Remote Accessor
+item.aft.duplicator.name=Duplicator
+
 
 # ======================================
 #				OTHER
 # ======================================
 
-itemGroup.afm=Advanced System Manager 2
+itemGroup.afm=AdvancedSystemManager 2

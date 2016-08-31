@@ -26,7 +26,7 @@ public class ContainerManager extends ContainerBase {
 
     @Override
     public boolean canInteractWith(EntityPlayer entityplayer) {
-        return entityplayer.getDistanceSq(manager.getPos().getX(), manager.getPos().getY(), manager.getPos().getZ()) <= 64;
+        return true;//entityplayer.getDistanceSq(manager.getPos().getX(), manager.getPos().getY(), manager.getPos().getZ()) <= 1024;
     }
 
     @Override
