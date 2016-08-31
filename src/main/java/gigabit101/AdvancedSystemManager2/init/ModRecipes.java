@@ -116,6 +116,10 @@ public class ModRecipes
                 Items.FEATHER
         );
 
+        GameRegistry.addShapelessRecipe(new ItemStack(ModItems.remoteaccessor, 1),
+                ModItems.remoteaccessor
+        );
+
         GameRegistry.addRecipe(new ClusterUpgradeRecipe());
         GameRegistry.addRecipe(new ClusterRecipe());
     }
