@@ -1,6 +1,5 @@
 package gigabit101.AdvancedSystemManager2.blocks;
 
-import gigabit101.AdvancedSystemManager2.AdvancedSystemManager2;
 import gigabit101.AdvancedSystemManager2.init.ModBlocks;
 import gigabit101.AdvancedSystemManager2.lib.ModInfo;
 import gigabit101.AdvancedSystemManager2.tiles.TileEntityCluster;
@@ -17,8 +16,10 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 
-public class BlockCableInput extends BlockContainer {
-    public BlockCableInput() {
+public class BlockCableInput extends BlockContainer
+{
+    public BlockCableInput()
+    {
         super(Material.IRON);
         setCreativeTab(ModBlocks.creativeTab);
         setSoundType(SoundType.METAL);
@@ -27,22 +28,26 @@ public class BlockCableInput extends BlockContainer {
     }
 
     @Override
-    public TileEntity createNewTileEntity(World world, int meta) {
+    public TileEntity createNewTileEntity(World world, int meta)
+    {
         return new TileEntityInput();
     }
 
     @Override
-    public EnumBlockRenderType getRenderType(IBlockState state) {
+    public EnumBlockRenderType getRenderType(IBlockState state)
+    {
         return EnumBlockRenderType.MODEL;
     }
 
     @Override
-    public boolean canConnectRedstone(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side) {
+    public boolean canConnectRedstone(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side)
+    {
         return true;
     }
 
     @Override
-    public void onBlockAdded(World world, BlockPos pos, IBlockState state) {
+    public void onBlockAdded(World world, BlockPos pos, IBlockState state)
+    {
         super.onBlockAdded(world, pos, state);
 
         updateRedstone(world, pos);
@@ -55,9 +60,11 @@ public class BlockCableInput extends BlockContainer {
 //        updateRedstone(world, pos);
 //    }
 
-    private void updateRedstone(World world, BlockPos pos) {
+    private void updateRedstone(World world, BlockPos pos)
+    {
         TileEntityInput input = TileEntityCluster.getTileEntity(TileEntityInput.class, world, pos);
-        if (input != null) {
+        if (input != null)
+        {
             input.triggerRedstone();
         }
     }

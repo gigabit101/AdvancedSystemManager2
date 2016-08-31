@@ -1,7 +1,6 @@
 package gigabit101.AdvancedSystemManager2.blocks;
 
 import gigabit101.AdvancedSystemManager2.AdvancedSystemManager2;
-import gigabit101.AdvancedSystemManager2.GeneratedInfo;
 import gigabit101.AdvancedSystemManager2.init.ModBlocks;
 import gigabit101.AdvancedSystemManager2.lib.ModInfo;
 import gigabit101.AdvancedSystemManager2.tiles.TileEntityManager;
@@ -12,22 +11,15 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.internal.FMLNetworkHandler;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class BlockManager extends BlockContainer
 {
@@ -43,23 +35,27 @@ public class BlockManager extends BlockContainer
     public static final IProperty LIMITLESS = PropertyBool.create("limitless");
 
     @Override
-    protected BlockStateContainer createBlockState() {
+    protected BlockStateContainer createBlockState()
+    {
         return new BlockStateContainer(this, LIMITLESS);
     }
 
     @Override
-    public IBlockState getStateFromMeta(int meta) {
+    public IBlockState getStateFromMeta(int meta)
+    {
         return getDefaultState().withProperty(LIMITLESS, meta == 1);
     }
 
     @Override
-    public int getMetaFromState(IBlockState state) {
+    public int getMetaFromState(IBlockState state)
+    {
         return (Boolean) state.getValue(LIMITLESS) ? 1 : 0;
     }
 
 
     @Override
-    public TileEntity createNewTileEntity(World world, int meta) {
+    public TileEntity createNewTileEntity(World world, int meta)
+    {
         return new TileEntityManager();
     }
 
@@ -88,7 +84,8 @@ public class BlockManager extends BlockContainer
 //    }
 
     @Override
-    public EnumBlockRenderType getRenderType(IBlockState state) {
+    public EnumBlockRenderType getRenderType(IBlockState state)
+    {
         return EnumBlockRenderType.MODEL;
     }
 
@@ -104,7 +101,7 @@ public class BlockManager extends BlockContainer
         TileEntity tileEntity = world.getTileEntity(pos);
         if (tileEntity != null && tileEntity instanceof TileEntityManager)
         {
-            ((TileEntityManager)tileEntity).updateInventories();
+            ((TileEntityManager) tileEntity).updateInventories();
         }
     }
 }

@@ -17,9 +17,8 @@ public class GuiHandler implements IGuiHandler
         TileEntity te = world.getTileEntity(new BlockPos(x, y, z));
         if (te != null && te instanceof ITileEntityInterface)
         {
-            return ((ITileEntityInterface)te).getContainer(te, player.inventory);
-        }
-        else
+            return ((ITileEntityInterface) te).getContainer(te, player.inventory);
+        } else
         {
             return null;
         }
@@ -31,9 +30,8 @@ public class GuiHandler implements IGuiHandler
         TileEntity te = world.getTileEntity(new BlockPos(x, y, z));
         if (te != null && te instanceof ITileEntityInterface)
         {
-            return ((ITileEntityInterface)te).getGui(te, player.inventory);
-        }
-        else
+            return ((ITileEntityInterface) te).getGui(te, player.inventory);
+        } else
         {
             return null;
         }

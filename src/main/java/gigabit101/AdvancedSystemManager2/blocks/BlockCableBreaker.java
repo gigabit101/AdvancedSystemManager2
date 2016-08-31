@@ -36,7 +36,8 @@ public class BlockCableBreaker extends BlockContainer
     }
 
     @Override
-    public TileEntity createNewTileEntity(World world, int meta) {
+    public TileEntity createNewTileEntity(World world, int meta)
+    {
         return new TileEntityBreaker();
     }
 
@@ -44,11 +45,13 @@ public class BlockCableBreaker extends BlockContainer
     public static final IProperty DIRECTION = PropertyDirection.create("direction");
 
     @Override
-    public BlockStateContainer createBlockState() {
+    public BlockStateContainer createBlockState()
+    {
         return new BlockStateContainer(this, DIRECTION, FRONT);
     }
 
-    public static EnumFacing getSide(int meta) {
+    public static EnumFacing getSide(int meta)
+    {
         return EnumFacing.getFront(meta % EnumFacing.values().length);
     }
 
@@ -59,8 +62,9 @@ public class BlockCableBreaker extends BlockContainer
     }
 
     @Override
-    public int getMetaFromState(IBlockState state) {
-        return ((EnumFacing)state.getValue(FRONT)).getIndex();
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((EnumFacing) state.getValue(FRONT)).getIndex();
     }
 
     @Override
@@ -75,12 +79,14 @@ public class BlockCableBreaker extends BlockContainer
     }
 
     @Override
-    public EnumBlockRenderType getRenderType(IBlockState state) {
+    public EnumBlockRenderType getRenderType(IBlockState state)
+    {
         return EnumBlockRenderType.MODEL;
     }
 
     @Override
-    public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase entity, ItemStack item) {
+    public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase entity, ItemStack item)
+    {
         if (!world.isRemote)
         {
             EnumFacing facing = BlockPistonBase.getFacingFromEntity(pos, entity);

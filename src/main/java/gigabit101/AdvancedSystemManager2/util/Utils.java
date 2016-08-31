@@ -26,8 +26,7 @@ public class Utils
         try
         {
             nbttagcompound = CompressedStreamTools.read(datainputstream, sizeTracker);
-        }
-        finally
+        } finally
         {
             datainputstream.close();
         }
@@ -43,8 +42,7 @@ public class Utils
         try
         {
             CompressedStreamTools.write(tagCompound, dataoutputstream);
-        }
-        finally
+        } finally
         {
             dataoutputstream.close();
         }

@@ -1,7 +1,7 @@
 package gigabit101.AdvancedSystemManager2.blocks;
 
-import gigabit101.AdvancedSystemManager2.lib.Localization;
 import gigabit101.AdvancedSystemManager2.init.ModBlocks;
+import gigabit101.AdvancedSystemManager2.lib.Localization;
 import gigabit101.AdvancedSystemManager2.lib.ModInfo;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -55,8 +55,7 @@ public class ItemCluster extends ItemBlock
             {
                 list.add(ClusterRegistry.getRegistryList().get(type).getItemStack().getDisplayName());
             }
-        }
-        else
+        } else
         {
             list.add(Localization.EMPTY_CLUSTER.toString());
         }

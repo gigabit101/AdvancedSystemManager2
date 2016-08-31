@@ -18,11 +18,13 @@ public abstract class ContainerBase extends Container
         this.player = player;
     }
 
-    public ITileEntityInterface getTileEntity() {
+    public ITileEntityInterface getTileEntity()
+    {
         return te;
     }
 
-    public List<IContainerListener> getCrafters() {
+    public List<IContainerListener> getCrafters()
+    {
         return listeners;
     }
 }

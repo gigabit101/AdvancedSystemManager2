@@ -1,7 +1,7 @@
 package gigabit101.AdvancedSystemManager2;
 
-import gigabit101.AdvancedSystemManager2.init.ModBlocks;
 import gigabit101.AdvancedSystemManager2.components.ModItemHelper;
+import gigabit101.AdvancedSystemManager2.init.ModBlocks;
 import gigabit101.AdvancedSystemManager2.init.ModItems;
 import gigabit101.AdvancedSystemManager2.init.ModRecipes;
 import gigabit101.AdvancedSystemManager2.lib.ModInfo;
@@ -50,7 +50,8 @@ public class AdvancedSystemManager2
     }
 
     @Mod.EventHandler
-    public void postInit(FMLPostInitializationEvent event) {
+    public void postInit(FMLPostInitializationEvent event)
+    {
         ModItemHelper.init();
     }
 

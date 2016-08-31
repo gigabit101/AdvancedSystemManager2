@@ -13,9 +13,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public interface ITileEntityInterface
 {
     public abstract Container getContainer(TileEntity te, InventoryPlayer inv);
+
     @SideOnly(Side.CLIENT)
     public abstract GuiScreen getGui(TileEntity te, InventoryPlayer inv);
+
     public abstract void readAllData(DataReader dr, EntityPlayer player);
+
     public abstract void readUpdatedData(DataReader dr, EntityPlayer player);
+
     public abstract void writeAllData(DataWriter dw);
 }

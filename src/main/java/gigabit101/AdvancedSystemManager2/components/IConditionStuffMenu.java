@@ -1,6 +1,7 @@
 package gigabit101.AdvancedSystemManager2.components;
 
 
-public interface IConditionStuffMenu {
+public interface IConditionStuffMenu
+{
     boolean requiresAll();
 }

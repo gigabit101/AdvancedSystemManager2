@@ -16,42 +16,50 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.internal.FMLNetworkHandler;
 
 //This is indeed not a subclass to the cable, you can't relay signals through this block
-public class BlockCableRelay extends BlockCableDirectionAdvanced {
+public class BlockCableRelay extends BlockCableDirectionAdvanced
+{
 
     @Override
-    public TileEntity createNewTileEntity(World world, int var2) {
+    public TileEntity createNewTileEntity(World world, int var2)
+    {
         return new TileEntityRelay();
     }
 
     @Override
-    public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase entity, ItemStack item) {
+    public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase entity, ItemStack item)
+    {
         super.onBlockPlacedBy(world, pos, state, entity, item);
 
         TileEntityRelay relay = TileEntityCluster.getTileEntity(TileEntityRelay.class, world, pos);
-        if (relay != null && isAdvanced(relay.getBlockMetadata()) && !world.isRemote) {
+        if (relay != null && isAdvanced(relay.getBlockMetadata()) && !world.isRemote)
+        {
             relay.setOwner(entity);
         }
     }
 
     @Override
-    protected Class<? extends TileEntityClusterElement> getTeClass() {
+    protected Class<? extends TileEntityClusterElement> getTeClass()
+    {
         return TileEntityRelay.class;
     }
 
     @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack heldItem, EnumFacing side, float xSide, float ySide, float zSide) {
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack heldItem, EnumFacing side, float xSide, float ySide, float zSide)
+    {
         TileEntityRelay relay = TileEntityCluster.getTileEntity(TileEntityRelay.class, world, pos);
-        if (relay != null && isAdvanced(relay.getBlockMetadata())) {
-            if (!world.isRemote) {
+        if (relay != null && isAdvanced(relay.getBlockMetadata()))
+        {
+            if (!world.isRemote)
+            {
                 FMLNetworkHandler.openGui(player, AdvancedSystemManager2.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
             }
 
             return true;
-        }else{
+        } else
+        {
             return false;
         }
     }
-
 
 
 }

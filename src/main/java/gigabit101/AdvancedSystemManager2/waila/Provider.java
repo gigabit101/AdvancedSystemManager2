@@ -1,7 +1,10 @@
 package gigabit101.AdvancedSystemManager2.waila;
 
+import gigabit101.AdvancedSystemManager2.blocks.BlockCableCamouflages;
+import gigabit101.AdvancedSystemManager2.blocks.BlockCableCluster;
+import gigabit101.AdvancedSystemManager2.blocks.BlockCableOutput;
+import gigabit101.AdvancedSystemManager2.blocks.ClusterRegistry;
 import gigabit101.AdvancedSystemManager2.lib.Localization;
-import gigabit101.AdvancedSystemManager2.blocks.*;
 import gigabit101.AdvancedSystemManager2.tiles.TileEntityCamouflage;
 import gigabit101.AdvancedSystemManager2.tiles.TileEntityCluster;
 import gigabit101.AdvancedSystemManager2.tiles.TileEntityOutput;
@@ -32,7 +35,7 @@ public class Provider implements IWailaDataProvider
         if (te != null && !isShiftDown())
         {
             TileEntityCamouflage camouflage = TileEntityCluster.getTileEntity(TileEntityCamouflage.class, te.getWorld(), te.getPos());
-            if (camouflage != null )
+            if (camouflage != null)
             {
                 int id = camouflage.getId(accessor.getSide().getIndex());
                 int meta = camouflage.getMeta(accessor.getSide().getIndex());
@@ -62,28 +65,26 @@ public class Provider implements IWailaDataProvider
         if (itemStack != null && itemStack.getItem() == iWailaDataAccessor.getStack().getItem())
         {
             TileEntity te = iWailaDataAccessor.getTileEntity();
-            if (te != null )
+            if (te != null)
             {
                 if (te instanceof TileEntityCluster)
                 {
-                    TileEntityCluster cluster = (TileEntityCluster)te;
+                    TileEntityCluster cluster = (TileEntityCluster) te;
 
                     for (byte type : cluster.getTypes())
                     {
                         list.add(ClusterRegistry.getRegistryList().get(type).getItemStack().getDisplayName());
                     }
-                }
-                else if(te instanceof TileEntityOutput)
+                } else if (te instanceof TileEntityOutput)
                 {
-                    TileEntityOutput emitter = (TileEntityOutput)te;
+                    TileEntityOutput emitter = (TileEntityOutput) te;
                     if (isShiftDown())
                     {
-                        for (EnumFacing side: EnumFacing.values())
+                        for (EnumFacing side : EnumFacing.values())
                         {
                             list.add(getEmitterSide(emitter, side, true));
                         }
-                    }
-                    else
+                    } else
                     {
                         list.add(getEmitterSide(emitter, iWailaDataAccessor.getSide(), false));
                     }
@@ -106,7 +107,8 @@ public class Provider implements IWailaDataProvider
     }
 
     @SideOnly(Side.CLIENT)
-    private boolean isShiftDown() {
+    private boolean isShiftDown()
+    {
         return GuiScreen.isShiftKeyDown();
     }
 

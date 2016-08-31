@@ -9,9 +9,11 @@ import net.minecraft.block.properties.PropertyEnum;
 
 import java.util.Collection;
 
-public class PropertyCamouflageType extends PropertyEnum {
+public class PropertyCamouflageType extends PropertyEnum
+{
 
-    protected PropertyCamouflageType(String name, Collection allowedValues) {
+    protected PropertyCamouflageType(String name, Collection allowedValues)
+    {
         super(name, TileEntityCamouflage.CamouflageType.class, allowedValues);
     }
 

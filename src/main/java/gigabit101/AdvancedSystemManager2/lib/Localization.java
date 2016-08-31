@@ -39,7 +39,7 @@ public enum Localization
     CAMOUFLAGE_SHORT,
     CAMOUFLAGE_LONG,
     SIGN_SHORT,
-    SIGN_LONG ,
+    SIGN_LONG,
 
     CONNECTION_INPUT,
     CONNECTION_OUTPUT,
@@ -356,7 +356,7 @@ public enum Localization
     EDITOR_DESCRIPTION_SHORT,
     USER_DESCRIPTION_SHORT,
     EDITOR_DESCRIPTION_LONG,
-    USER_DESCRIPTION_LONG ,
+    USER_DESCRIPTION_LONG,
     PERMISSION_OWNER,
     PERMISSION_EDITOR,
     PERMISSION_USER,
@@ -377,7 +377,8 @@ public enum Localization
         }
     }
 
-    public String toString() {
+    public String toString()
+    {
         return I18n.translateToLocal("gui." + ModInfo.UNLOCALIZED_START + name);
     }
 

@@ -1,7 +1,7 @@
 package gigabit101.AdvancedSystemManager2.proxy;
 
-import gigabit101.AdvancedSystemManager2.init.ModBlocks;
 import gigabit101.AdvancedSystemManager2.blocks.client.ModelLoader;
+import gigabit101.AdvancedSystemManager2.init.ModBlocks;
 import gigabit101.AdvancedSystemManager2.lib.ModInfo;
 import gigabit101.AdvancedSystemManager2.settings.Settings;
 import net.minecraft.block.Block;
@@ -50,7 +50,7 @@ public class ClientProxy extends CommonProxy
         {
             locations[i] = new ResourceLocation(getResource(names[i]));
         }
-        if(block != null)
+        if (block != null)
         {
             ModelBakery.registerItemVariants(Item.getItemFromBlock(block), locations);
         }

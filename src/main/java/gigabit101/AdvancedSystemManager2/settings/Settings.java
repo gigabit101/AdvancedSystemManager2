@@ -1,10 +1,10 @@
 package gigabit101.AdvancedSystemManager2.settings;
 
-import gigabit101.AdvancedSystemManager2.tiles.TileEntityManager;
 import gigabit101.AdvancedSystemManager2.network.DataReader;
 import gigabit101.AdvancedSystemManager2.network.DataWriter;
 import gigabit101.AdvancedSystemManager2.network.FileHelper;
 import gigabit101.AdvancedSystemManager2.network.PacketHandler;
+import gigabit101.AdvancedSystemManager2.tiles.TileEntityManager;
 import net.minecraft.block.state.IBlockState;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -25,7 +25,8 @@ public final class Settings
     private static boolean darkMode;
 
     @SideOnly(Side.CLIENT)
-    public static void openMenu(TileEntityManager manager) {
+    public static void openMenu(TileEntityManager manager)
+    {
         manager.specialRenderer = new SettingsScreen(manager);
     }
 
@@ -47,20 +48,18 @@ public final class Settings
                 autoBlacklist = dr.readBoolean();
                 enlargeInterfaces = dr.readBoolean();
                 darkMode = dr.readBoolean();
-                if (version >= 1) {
+                if (version >= 1)
+                {
                     priorityMoveFirst = dr.readBoolean();
                 }
-            }
-            catch (Exception ignored)
+            } catch (Exception ignored)
             {
                 loadDefault();
-            }
-            finally
+            } finally
             {
                 dr.close();
             }
-        }
-        else
+        } else
         {
             loadDefault();
         }
@@ -102,7 +101,8 @@ public final class Settings
         }
     }
 
-    public static boolean isAutoCloseGroup() {
+    public static boolean isAutoCloseGroup()
+    {
         return autoCloseGroup;
     }
 
@@ -112,7 +112,8 @@ public final class Settings
         save();
     }
 
-    public static boolean isLargeOpenHitBox() {
+    public static boolean isLargeOpenHitBox()
+    {
         return largeOpenHitBox;
     }
 
@@ -122,7 +123,8 @@ public final class Settings
         save();
     }
 
-    public static boolean isLargeOpenHitBoxMenu() {
+    public static boolean isLargeOpenHitBoxMenu()
+    {
         return largeOpenHitBoxMenu;
     }
 
@@ -132,7 +134,8 @@ public final class Settings
         save();
     }
 
-    public static boolean isQuickGroupOpen() {
+    public static boolean isQuickGroupOpen()
+    {
         return quickGroupOpen;
     }
 
@@ -142,7 +145,8 @@ public final class Settings
         save();
     }
 
-    public static boolean isCommandTypes() {
+    public static boolean isCommandTypes()
+    {
         return commandTypes;
     }
 
@@ -152,7 +156,8 @@ public final class Settings
         save();
     }
 
-    public static boolean isAutoSide() {
+    public static boolean isAutoSide()
+    {
         return autoSide;
     }
 
@@ -162,7 +167,8 @@ public final class Settings
         save();
     }
 
-    public static boolean isAutoBlacklist() {
+    public static boolean isAutoBlacklist()
+    {
         return autoBlacklist;
     }
 
@@ -185,16 +191,14 @@ public final class Settings
             DataWriter dw = PacketHandler.getWriterForServerActionPacket();
             dw.writeBoolean(limitless);
             PacketHandler.sendDataToServer(dw);
-        }
-        else
+        } else
         {
             IBlockState state = manager.getWorld().getBlockState(manager.getPos());
             int meta = state.getBlock().getMetaFromState(state);
             if (limitless)
             {
                 meta |= 1;
-            }
-            else
+            } else
             {
                 meta &= ~1;
             }
@@ -202,7 +206,8 @@ public final class Settings
         }
     }
 
-    public static boolean isEnlargeInterfaces() {
+    public static boolean isEnlargeInterfaces()
+    {
         return enlargeInterfaces;
     }
 
@@ -212,7 +217,8 @@ public final class Settings
         save();
     }
 
-    public static boolean isPriorityMoveFirst() {
+    public static boolean isPriorityMoveFirst()
+    {
         return priorityMoveFirst;
     }
 
@@ -221,7 +227,10 @@ public final class Settings
         Settings.priorityMoveFirst = priorityMoveFirst;
     }
 
-    public static boolean isDarkMode() { return darkMode; }
+    public static boolean isDarkMode()
+    {
+        return darkMode;
+    }
 
     public static void setDarkMode(boolean darkMode)
     {
@@ -229,5 +238,7 @@ public final class Settings
         save();
     }
 
-    private Settings() {}
+    private Settings()
+    {
+    }
 }

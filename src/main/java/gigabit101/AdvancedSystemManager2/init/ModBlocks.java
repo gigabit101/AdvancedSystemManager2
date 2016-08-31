@@ -3,8 +3,6 @@ package gigabit101.AdvancedSystemManager2.init;
 import gigabit101.AdvancedSystemManager2.blocks.*;
 import gigabit101.AdvancedSystemManager2.tiles.*;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -84,12 +82,14 @@ public final class ModBlocks
         creativeTab = new CreativeTabs("afm")
         {
             @Override
-            public ItemStack getIconItemStack() {
+            public ItemStack getIconItemStack()
+            {
                 return new ItemStack(blockManager);
             }
 
             @Override
-            public Item getTabIconItem() {
+            public Item getTabIconItem()
+            {
                 return null;
             }
         };
@@ -156,5 +156,7 @@ public final class ModBlocks
         ClusterRegistry.register(TileEntitySignUpdater.class, blockCableSign);
     }
 
-   private ModBlocks() {}
+    private ModBlocks()
+    {
+    }
 }

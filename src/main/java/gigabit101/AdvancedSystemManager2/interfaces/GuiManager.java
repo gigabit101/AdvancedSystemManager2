@@ -1,14 +1,14 @@
 package gigabit101.AdvancedSystemManager2.interfaces;
 
 import gigabit101.AdvancedSystemManager2.CollisionHelper;
-import gigabit101.AdvancedSystemManager2.lib.Localization;
 import gigabit101.AdvancedSystemManager2.animation.AnimationController;
-import gigabit101.AdvancedSystemManager2.settings.Settings;
-import gigabit101.AdvancedSystemManager2.tiles.TileEntityManager;
 import gigabit101.AdvancedSystemManager2.components.FlowComponent;
+import gigabit101.AdvancedSystemManager2.lib.Localization;
 import gigabit101.AdvancedSystemManager2.network.DataBitHelper;
 import gigabit101.AdvancedSystemManager2.network.DataWriter;
 import gigabit101.AdvancedSystemManager2.network.PacketHandler;
+import gigabit101.AdvancedSystemManager2.settings.Settings;
+import gigabit101.AdvancedSystemManager2.tiles.TileEntityManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -41,7 +41,8 @@ public class GuiManager extends GuiBase
     private static final ResourceLocation COMPONENTS = registerTexture("FlowComponents");
 
     @Override
-    public ResourceLocation getComponentResource() {
+    public ResourceLocation getComponentResource()
+    {
         return COMPONENTS;
     }
 
@@ -57,18 +58,15 @@ public class GuiManager extends GuiBase
         {
             drawRect(0, 0, width, height, 0xFFEC008C);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-        }
-        else if (useBlueScreen)
+        } else if (useBlueScreen)
         {
             drawRect(0, 0, width, height, 0xFF000A91);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-        }
-        else if (useGreenScreen)
+        } else if (useGreenScreen)
         {
             drawRect(0, 0, width, height, 0xFF00FF00);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-        }
-        else
+        } else
         {
             super.drawWorldBackground(val);
         }
@@ -84,7 +82,7 @@ public class GuiManager extends GuiBase
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 
             bindTexture(BACKGROUND_1);
-            if(Settings.isDarkMode())
+            if (Settings.isDarkMode())
                 GlStateManager.color(0.3F, 0.3F, 0.3F, 1.0F);
 
             drawTexture(0, 0, 0, 0, 256, 256);
@@ -92,7 +90,7 @@ public class GuiManager extends GuiBase
             bindTexture(BACKGROUND_2);
 
             drawTexture(256, 0, 0, 0, 256, 256);
-            if(Settings.isDarkMode())
+            if (Settings.isDarkMode())
                 GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 
         }
@@ -125,7 +123,6 @@ public class GuiManager extends GuiBase
         }
 
 
-
         //update components completely independent on their visibility
         long ticks = Minecraft.getSystemTime();
         float elapsedSeconds = (ticks - this.lastTicks) / 1000F;
@@ -145,7 +142,8 @@ public class GuiManager extends GuiBase
         {
             FlowComponent itemBase = manager.getZLevelRenderingList().get(i);
 
-            if (itemBase.isVisible()) {
+            if (itemBase.isVisible())
+            {
                 if (itemBase.isOpen() && openCount == Z_LEVEL_OPEN_MAXIMUM)
                 {
                     itemBase.close();
@@ -155,8 +153,7 @@ public class GuiManager extends GuiBase
                 {
                     zLevel -= Z_LEVEL_COMPONENT_OPEN_DIFFERENCE;
                     openCount++;
-                }
-                else
+                } else
                 {
                     zLevel -= Z_LEVEL_COMPONENT_CLOSED_DIFFERENCE;
                 }
@@ -213,7 +210,8 @@ public class GuiManager extends GuiBase
     {
         super.handleMouseInput();
         int scroll = Mouse.getEventDWheel();
-        if (scroll != 0) {
+        if (scroll != 0)
+        {
             if (hasSpecialRenderer())
             {
                 getSpecialRenderer().onScroll(scroll);
@@ -296,10 +294,11 @@ public class GuiManager extends GuiBase
         for (int i = 0; i < manager.buttons.size(); i++)
         {
             TileEntityManager.Button guiButton = manager.buttons.get(i);
-            if (guiButton.isVisible() && CollisionHelper.inBounds(guiButton.getX(), guiButton.getY(), TileEntityManager.BUTTON_SIZE_W, TileEntityManager.BUTTON_SIZE_H, x, y) && guiButton.activateOnRelease() == release) {
+            if (guiButton.isVisible() && CollisionHelper.inBounds(guiButton.getX(), guiButton.getY(), TileEntityManager.BUTTON_SIZE_W, TileEntityManager.BUTTON_SIZE_H, x, y) && guiButton.activateOnRelease() == release)
+            {
                 DataWriter dw = PacketHandler.getButtonPacketWriter();
                 dw.writeData(i, DataBitHelper.GUI_BUTTON_ID);
-                if(guiButton.onClick(dw))
+                if (guiButton.onClick(dw))
                 {
                     PacketHandler.sendDataToServer(dw);
                 }
@@ -319,7 +318,8 @@ public class GuiManager extends GuiBase
         x -= guiLeft;
         y -= guiTop;
 
-        if (hasSpecialRenderer()) {
+        if (hasSpecialRenderer())
+        {
             getSpecialRenderer().onDrag(this, x, y);
             return;
         }
@@ -344,12 +344,14 @@ public class GuiManager extends GuiBase
         x -= guiLeft;
         y -= guiTop;
 
-        if (hasSpecialRenderer()) {
+        if (hasSpecialRenderer())
+        {
             getSpecialRenderer().onRelease(this, x, y);
             return;
         }
 
-        if (useButtons) {
+        if (useButtons)
+        {
             onClickButtonCheck(x, y, true);
         }
 
@@ -384,39 +386,45 @@ public class GuiManager extends GuiBase
     private boolean useMouseOver = true;
 
     private List<SecretCode> codes = new ArrayList<SecretCode>();
+
     {
         codes.add(new SecretCode("animate")
         {
             @Override
-            protected void trigger() {
+            protected void trigger()
+            {
                 controller = new AnimationController(manager, 2);
             }
         });
         codes.add(new SecretCode("animslow")
         {
             @Override
-            protected void trigger() {
+            protected void trigger()
+            {
                 controller = new AnimationController(manager, 1);
             }
         });
         codes.add(new SecretCode("animfast")
         {
             @Override
-            protected void trigger() {
+            protected void trigger()
+            {
                 controller = new AnimationController(manager, 5);
             }
         });
         codes.add(new SecretCode("animrapid")
         {
             @Override
-            protected void trigger() {
+            protected void trigger()
+            {
                 controller = new AnimationController(manager, 20);
             }
         });
         codes.add(new SecretCode("animinstant")
         {
             @Override
-            protected void trigger() {
+            protected void trigger()
+            {
                 controller = new AnimationController(manager, 100);
             }
         });
@@ -453,21 +461,24 @@ public class GuiManager extends GuiBase
         codes.add(new SecretCode("buttons")
         {
             @Override
-            protected void trigger() {
+            protected void trigger()
+            {
                 useButtons = !useButtons;
             }
         });
         codes.add(new SecretCode("info")
         {
             @Override
-            protected void trigger() {
+            protected void trigger()
+            {
                 useInfo = !useInfo;
             }
         });
         codes.add(new SecretCode("mouse")
         {
             @Override
-            protected void trigger() {
+            protected void trigger()
+            {
                 useMouseOver = !useMouseOver;
             }
         });
@@ -478,7 +489,8 @@ public class GuiManager extends GuiBase
         private final String code;
         private int triggerNumber;
 
-        private SecretCode(String code) {
+        private SecretCode(String code)
+        {
             this.code = code;
         }
 
@@ -492,14 +504,12 @@ public class GuiManager extends GuiBase
                     {
                         triggerNumber = 0;
                         trigger();
-                    }
-                    else
+                    } else
                     {
                         triggerNumber++;
                     }
                     return true;
-                }
-                else if (triggerNumber != 0)
+                } else if (triggerNumber != 0)
                 {
                     triggerNumber = 0;
                     keyTyped(c);
@@ -507,6 +517,7 @@ public class GuiManager extends GuiBase
             }
             return false;
         }
+
         protected abstract void trigger();
     }
 
@@ -516,8 +527,7 @@ public class GuiManager extends GuiBase
         if (hasSpecialRenderer())
         {
             getSpecialRenderer().onKeyTyped(this, c, k);
-        }
-        else
+        } else
         {
             if (k == 54 && !doubleShiftFlag)
             {
@@ -565,15 +575,18 @@ public class GuiManager extends GuiBase
 
     private TileEntityManager manager;
 
-    public TileEntityManager getManager() {
+    public TileEntityManager getManager()
+    {
         return manager;
     }
 
-    private boolean hasSpecialRenderer() {
+    private boolean hasSpecialRenderer()
+    {
         return getSpecialRenderer() != null;
     }
 
-    private IInterfaceRenderer getSpecialRenderer() {
+    private IInterfaceRenderer getSpecialRenderer()
+    {
         return manager.specialRenderer;
     }
 }

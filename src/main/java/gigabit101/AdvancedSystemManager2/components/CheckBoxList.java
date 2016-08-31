@@ -10,7 +10,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CheckBoxList {
+public class CheckBoxList
+{
     public static final int CHECK_BOX_SIZE = 8;
     private static final int CHECK_BOX_SRC_X = 42;
     private static final int CHECK_BOX_SRC_Y = 106;
@@ -19,25 +20,31 @@ public class CheckBoxList {
 
     private List<CheckBox> checkBoxes;
 
-    public CheckBoxList() {
+    public CheckBoxList()
+    {
         checkBoxes = new ArrayList<CheckBox>();
     }
 
-    public void addCheckBox(CheckBox checkBox) {
+    public void addCheckBox(CheckBox checkBox)
+    {
         checkBoxes.add(checkBox);
     }
 
     @SideOnly(Side.CLIENT)
-    public void draw(GuiManager gui, int mX, int mY) {
-        for (CheckBox checkBox : checkBoxes) {
-            if (checkBox.isVisible()) {
+    public void draw(GuiManager gui, int mX, int mY)
+    {
+        for (CheckBox checkBox : checkBoxes)
+        {
+            if (checkBox.isVisible())
+            {
                 int srcCheckBoxX = checkBox.getValue() ? 1 : 0;
                 int srcCheckBoxY = CollisionHelper.inBounds(checkBox.getX(), checkBox.getY(), CHECK_BOX_SIZE, CHECK_BOX_SIZE, mX, mY) ? 1 : 0;
 
                 gui.drawTexture(checkBox.getX(), checkBox.getY(), CHECK_BOX_SRC_X + srcCheckBoxX * CHECK_BOX_SIZE, CHECK_BOX_SRC_Y + srcCheckBoxY * CHECK_BOX_SIZE, CHECK_BOX_SIZE, CHECK_BOX_SIZE);
-                if (checkBox.getName() != null) {
+                if (checkBox.getName() != null)
+                {
                     int colour;
-                    if(Settings.isDarkMode())
+                    if (Settings.isDarkMode())
                         colour = 0x904040;
                     else
                         colour = 0x404040;
@@ -47,9 +54,12 @@ public class CheckBoxList {
         }
     }
 
-    public void onClick(int mX, int mY) {
-        for (CheckBox checkBox : checkBoxes) {
-            if (checkBox.isVisible() && CollisionHelper.inBounds(checkBox.getX(), checkBox.getY(), CHECK_BOX_SIZE, CHECK_BOX_SIZE, mX, mY)) {
+    public void onClick(int mX, int mY)
+    {
+        for (CheckBox checkBox : checkBoxes)
+        {
+            if (checkBox.isVisible() && CollisionHelper.inBounds(checkBox.getX(), checkBox.getY(), CHECK_BOX_SIZE, CHECK_BOX_SIZE, mX, mY))
+            {
                 checkBox.setValue(!checkBox.getValue());
                 checkBox.onUpdate();
                 break;

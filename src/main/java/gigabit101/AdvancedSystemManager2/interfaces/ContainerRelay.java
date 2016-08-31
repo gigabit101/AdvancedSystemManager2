@@ -1,7 +1,7 @@
 package gigabit101.AdvancedSystemManager2.interfaces;
 
-import gigabit101.AdvancedSystemManager2.tiles.TileEntityRelay;
 import gigabit101.AdvancedSystemManager2.blocks.UserPermission;
+import gigabit101.AdvancedSystemManager2.tiles.TileEntityRelay;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 
@@ -24,10 +24,12 @@ public class ContainerRelay extends ContainerBase
     }
 
     @Override
-    public void detectAndSendChanges() {
+    public void detectAndSendChanges()
+    {
         super.detectAndSendChanges();
 
-        if (oldPermissions != null) {
+        if (oldPermissions != null)
+        {
             relay.updateData(this);
         }
     }

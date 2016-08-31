@@ -14,14 +14,16 @@ import org.lwjgl.util.vector.Vector3f;
 import java.util.LinkedList;
 import java.util.List;
 
-enum SideQuad {
+enum SideQuad
+{
     STRONG,
     WEAK,
     IDLE
 }
 
 //Needed to render all the sides individually, if they where made with JSON it would be a huge amount of files, the new format is not good for dynamic and advanced blocks
-public class BakedEmitterBlockModel implements IBakedModel {
+public class BakedEmitterBlockModel implements IBakedModel
+{
 
     private VertexFormat format;
     private TextureAtlasSprite strongSprite;
@@ -32,7 +34,8 @@ public class BakedEmitterBlockModel implements IBakedModel {
     private BakedQuad[] weakQuads = new BakedQuad[EnumFacing.values().length];
     private BakedQuad[] idleQuads = new BakedQuad[EnumFacing.values().length];
 
-    public BakedEmitterBlockModel(Function<ResourceLocation, TextureAtlasSprite> bakedTextureGetter) {
+    public BakedEmitterBlockModel(Function<ResourceLocation, TextureAtlasSprite> bakedTextureGetter)
+    {
         FaceBakery faceBakery = new FaceBakery();
         BlockFaceUV bfUV = new BlockFaceUV(new float[]{0, 0, 16, 16}, 0);
         strongSprite = bakedTextureGetter.apply(EmitterBlockModel.STRONG);
@@ -42,7 +45,8 @@ public class BakedEmitterBlockModel implements IBakedModel {
         Vector3f v1 = new Vector3f(0, 0, 0);
         Vector3f v2 = new Vector3f(16, 16, 16);
 
-        for (EnumFacing facing: EnumFacing.values()) {
+        for (EnumFacing facing : EnumFacing.values())
+        {
             strongQuads[facing.getIndex()] = faceBakery.makeBakedQuad(v1, v2, new BlockPartFace(facing, -1, "stevesfactorymanager:blocks/cable_output_strong", bfUV), strongSprite, facing, ModelRotation.X0_Y0, null, false, true);
             weakQuads[facing.getIndex()] = faceBakery.makeBakedQuad(v1, v2, new BlockPartFace(facing, -1, "stevesfactorymanager:blocks/cable_weak_strong", bfUV), weakSprite, facing, ModelRotation.X0_Y0, null, false, true);
             idleQuads[facing.getIndex()] = faceBakery.makeBakedQuad(v1, v2, new BlockPartFace(facing, -1, "stevesfactorymanager:blocks/cable_idle", bfUV), idleSprite, facing, ModelRotation.X0_Y0, null, false, true);
@@ -50,8 +54,10 @@ public class BakedEmitterBlockModel implements IBakedModel {
     }
 
     @Override
-    public List<BakedQuad> getQuads(IBlockState state, EnumFacing side, long rand) {
-        if (state instanceof IExtendedBlockState) {
+    public List<BakedQuad> getQuads(IBlockState state, EnumFacing side, long rand)
+    {
+        if (state instanceof IExtendedBlockState)
+        {
             IExtendedBlockState blockState = (IExtendedBlockState) state;
             return new AssembledBakedModel(blockState).getQuads(state, side, rand);
         }
@@ -60,32 +66,38 @@ public class BakedEmitterBlockModel implements IBakedModel {
     }
 
     @Override
-    public boolean isAmbientOcclusion() {
+    public boolean isAmbientOcclusion()
+    {
         return true;
     }
 
     @Override
-    public boolean isGui3d() {
+    public boolean isGui3d()
+    {
         return false;
     }
 
     @Override
-    public boolean isBuiltInRenderer() {
+    public boolean isBuiltInRenderer()
+    {
         return false;
     }
 
     @Override
-    public TextureAtlasSprite getParticleTexture() {
+    public TextureAtlasSprite getParticleTexture()
+    {
         return idleSprite;
     }
 
     @Override
-    public ItemCameraTransforms getItemCameraTransforms() {
+    public ItemCameraTransforms getItemCameraTransforms()
+    {
         return ItemCameraTransforms.DEFAULT;
     }
 
     @Override
-    public ItemOverrideList getOverrides() {
+    public ItemOverrideList getOverrides()
+    {
         return ItemOverrideList.NONE;
     }
 
@@ -96,38 +108,50 @@ public class BakedEmitterBlockModel implements IBakedModel {
 
         private SideQuad[] sideQuads = new SideQuad[EnumFacing.values().length];
 
-        public AssembledBakedModel(IExtendedBlockState blockState) {
+        public AssembledBakedModel(IExtendedBlockState blockState)
+        {
             Object obj = blockState.getValue(BlockCableOutput.STRONG_SIDES);
 
-            if (obj != null) {
+            if (obj != null)
+            {
 
                 int strongVals = blockState.getValue(BlockCableOutput.STRONG_SIDES);
                 int weakVals = blockState.getValue(BlockCableOutput.WEAK_SIDES);
 
-                for (EnumFacing facing: EnumFacing.values()) {
-                    if ((strongVals & (1 << facing.getIndex())) >> facing.getIndex() == 1) {
+                for (EnumFacing facing : EnumFacing.values())
+                {
+                    if ((strongVals & (1 << facing.getIndex())) >> facing.getIndex() == 1)
+                    {
                         sideQuads[facing.getIndex()] = SideQuad.STRONG;
-                    } else if ((weakVals & (1 << facing.getIndex())) >> facing.getIndex() == 1) {
+                    } else if ((weakVals & (1 << facing.getIndex())) >> facing.getIndex() == 1)
+                    {
                         sideQuads[facing.getIndex()] = SideQuad.WEAK;
-                    } else {
+                    } else
+                    {
                         sideQuads[facing.getIndex()] = SideQuad.IDLE;
                     }
                 }
-            } else {
-                for (int i = 0; i < 6; i++) {
+            } else
+            {
+                for (int i = 0; i < 6; i++)
+                {
                     sideQuads[i] = SideQuad.IDLE;
                 }
             }
         }
 
-        public AssembledBakedModel() {
-            for (int i = 0; i < 6; i++) {
+        public AssembledBakedModel()
+        {
+            for (int i = 0; i < 6; i++)
+            {
                 sideQuads[i] = SideQuad.IDLE;
             }
         }
 
-        private BakedQuad getQuadFromSide(SideQuad sideQuad, EnumFacing facing) {
-            switch (sideQuad) {
+        private BakedQuad getQuadFromSide(SideQuad sideQuad, EnumFacing facing)
+        {
+            switch (sideQuad)
+            {
                 case STRONG:
                     return strongQuads[facing.getIndex()];
                 case WEAK:
@@ -137,35 +161,40 @@ public class BakedEmitterBlockModel implements IBakedModel {
                     return idleQuads[facing.getIndex()];
             }
         }
-/*
+
+        /*
+                @Override
+                public List getFaceQuads(EnumFacing side) {
+                    List<BakedQuad> allFaceQuads = new LinkedList<BakedQuad>();
+
+                    allFaceQuads.add(getQuadFromSide(sideQuads[side.getIndex()], side));
+
+                    return allFaceQuads;
+                }
+
+                @Override
+                public List getGeneralQuads() {
+                    List<BakedQuad> allQuads = new LinkedList<BakedQuad>();
+
+                    for (EnumFacing facing: EnumFacing.values()) {
+                        allQuads.add(getQuadFromSide(sideQuads[facing.getIndex()], facing));
+                    }
+
+                    return allQuads;
+                }
+        */
         @Override
-        public List getFaceQuads(EnumFacing side) {
+        public List<BakedQuad> getQuads(IBlockState state, EnumFacing side, long rand)
+        {
             List<BakedQuad> allFaceQuads = new LinkedList<BakedQuad>();
 
-            allFaceQuads.add(getQuadFromSide(sideQuads[side.getIndex()], side));
-
-            return allFaceQuads;
-        }
-
-        @Override
-        public List getGeneralQuads() {
-            List<BakedQuad> allQuads = new LinkedList<BakedQuad>();
-
-            for (EnumFacing facing: EnumFacing.values()) {
-                allQuads.add(getQuadFromSide(sideQuads[facing.getIndex()], facing));
-            }
-
-            return allQuads;
-        }
-*/
-        @Override
-        public List<BakedQuad> getQuads(IBlockState state, EnumFacing side, long rand) {
-            List<BakedQuad> allFaceQuads = new LinkedList<BakedQuad>();
-
-            if (side != null) {
+            if (side != null)
+            {
                 allFaceQuads.add(getQuadFromSide(sideQuads[side.getIndex()], side));
-            } else {
-                for (EnumFacing facing: EnumFacing.values()) {
+            } else
+            {
+                for (EnumFacing facing : EnumFacing.values())
+                {
                     allFaceQuads.add(getQuadFromSide(sideQuads[facing.getIndex()], facing));
                 }
             }
@@ -174,32 +203,38 @@ public class BakedEmitterBlockModel implements IBakedModel {
         }
 
         @Override
-        public boolean isAmbientOcclusion() {
+        public boolean isAmbientOcclusion()
+        {
             return true;
         }
 
         @Override
-        public boolean isGui3d() {
+        public boolean isGui3d()
+        {
             return false;
         }
 
         @Override
-        public boolean isBuiltInRenderer() {
+        public boolean isBuiltInRenderer()
+        {
             return false;
         }
 
         @Override
-        public TextureAtlasSprite getParticleTexture() {
+        public TextureAtlasSprite getParticleTexture()
+        {
             return idleSprite;
         }
 
         @Override
-        public ItemCameraTransforms getItemCameraTransforms() {
+        public ItemCameraTransforms getItemCameraTransforms()
+        {
             return ItemCameraTransforms.DEFAULT;
         }
 
         @Override
-        public ItemOverrideList getOverrides() {
+        public ItemOverrideList getOverrides()
+        {
             return ItemOverrideList.NONE;
         }
 
