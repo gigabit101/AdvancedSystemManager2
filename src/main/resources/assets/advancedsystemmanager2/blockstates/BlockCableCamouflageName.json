@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "camo_type=cable_camo": { "model": "advancedsystemmanager2:builtin/cable_camouflage" },
+        "camo_type=cable_camo_inside": { "model": "advancedsystemmanager2:builtin/cable_camouflage" },
+        "camo_type=cable_camo_shape": { "model": "advancedsystemmanager2:builtin/cable_camouflage" }
+    }
+}

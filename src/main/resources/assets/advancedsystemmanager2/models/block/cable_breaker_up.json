@@ -1,0 +1,8 @@
+{
+  "parent": "advancedsystemmanager2:block/cable_breaker_vertical",
+  "textures": {
+    "front": "advancedsystemmanager2:blocks/cable_breaker_front",
+    "orient": "advancedsystemmanager2:blocks/cable_breaker_direction",
+    "side": "advancedsystemmanager2:blocks/cable_idle"
+  }
+}

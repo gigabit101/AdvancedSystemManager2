@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "limitless=false": {
+            "model": "advancedsystemmanager2:machine_manager"
+        },
+        "limitless=true": {
+            "model": "advancedsystemmanager2:machine_manager"
+        }
+    }
+}

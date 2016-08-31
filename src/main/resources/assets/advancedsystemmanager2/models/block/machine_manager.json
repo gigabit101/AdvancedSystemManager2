@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures": {
+        "top": "advancedsystemmanager2:blocks/manager_top",
+        "bottom": "advancedsystemmanager2:blocks/manager_bot",
+        "side": "advancedsystemmanager2:blocks/manager_side"
+    }
+}

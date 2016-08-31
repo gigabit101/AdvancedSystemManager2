@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "facing=north": { "model": "advancedsystemmanager2:cable_sign"},
+        "facing=down": { "model": "advancedsystemmanager2:cable_sign", "x": 90 },
+        "facing=up": { "model": "advancedsystemmanager2:cable_sign", "x": 270  },
+        "facing=east": { "model": "advancedsystemmanager2:cable_sign", "y": 90 },
+        "facing=south": { "model": "advancedsystemmanager2:cable_sign", "y": 180 },
+        "facing=west": { "model": "advancedsystemmanager2:cable_sign",  "y": 270 }
+    }
+}

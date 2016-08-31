@@ -1,0 +1,16 @@
+{
+    "variants": {
+        "advanced=false,facing=north": { "model": "advancedsystemmanager2:cable_relay"},
+        "advanced=false,facing=down": { "model": "advancedsystemmanager2:cable_relay", "x": 90 },
+        "advanced=false,facing=up": { "model": "advancedsystemmanager2:cable_relay", "x": 270  },
+        "advanced=false,facing=east": { "model": "advancedsystemmanager2:cable_relay", "y": 90 },
+        "advanced=false,facing=south": { "model": "advancedsystemmanager2:cable_relay", "y": 180 },
+        "advanced=false,facing=west": { "model": "advancedsystemmanager2:cable_relay",  "y": 270 },
+        "advanced=true,facing=north": { "model": "advancedsystemmanager2:cable_relay_advanced" },
+        "advanced=true,facing=down": { "model": "advancedsystemmanager2:cable_relay_advanced", "x": 90 },
+        "advanced=true,facing=up": { "model": "advancedsystemmanager2:cable_relay_advanced", "x": 270 },
+        "advanced=true,facing=east": { "model": "advancedsystemmanager2:cable_relay_advanced", "y": 90 },
+        "advanced=true,facing=south": { "model": "advancedsystemmanager2:cable_relay_advanced", "y": 180 },
+        "advanced=true,facing=west": { "model": "advancedsystemmanager2:cable_relay_advanced", "y": 270 }
+    }
+}

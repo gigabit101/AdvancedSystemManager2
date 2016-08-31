@@ -1,0 +1,7 @@
+{
+    "parent": "advancedsystemmanager2:block/orientable_front",
+    "textures": {
+        "front": "advancedsystemmanager2:blocks/cable_relay",
+        "side": "advancedsystemmanager2:blocks/cable_idle"
+    }
+}

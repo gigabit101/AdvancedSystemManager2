@@ -1,0 +1,54 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
+    }
+}
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+repositories {
+    maven { // WAILA
+        name 'Prof. Mobius'
+        url 'http://mobiusstrip.eu/maven'
+    }
+    maven { // NEI and friends
+        name 'Chickenbones'
+        url 'http://chickenbones.net/maven/'
+    }
+}
+
+group= "gigabit101.AdvancedSystemManager2"
+archivesBaseName = "AdvancedSystemManager2"
+
+version = "1.10.2-1.0.0"
+minecraft {
+    version = "1.10.2-12.18.1.2050"
+    runDir = "run"
+    mappings = 'snapshot_20160810'
+}
+
+dependencies {
+    compile "mcp.mobius.waila:Waila:1.7.0-B3_1.9.4"
+}
+
+processResources
+{
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
