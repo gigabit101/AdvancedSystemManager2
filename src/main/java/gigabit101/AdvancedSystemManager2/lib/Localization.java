@@ -1,7 +1,6 @@
-package gigabit101.AdvancedSystemManager2;
+package gigabit101.AdvancedSystemManager2.lib;
 
 
-import gigabit101.AdvancedSystemManager2.lib.ModInfo;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.text.translation.I18n;
 

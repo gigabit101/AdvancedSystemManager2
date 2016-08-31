@@ -1,6 +1,6 @@
 package gigabit101.AdvancedSystemManager2.blocks;
 
-import gigabit101.AdvancedSystemManager2.Localization;
+import gigabit101.AdvancedSystemManager2.lib.Localization;
 import gigabit101.AdvancedSystemManager2.tiles.*;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.tileentity.TileEntity;

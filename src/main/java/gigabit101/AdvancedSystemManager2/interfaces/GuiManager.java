@@ -1,7 +1,7 @@
 package gigabit101.AdvancedSystemManager2.interfaces;
 
 import gigabit101.AdvancedSystemManager2.CollisionHelper;
-import gigabit101.AdvancedSystemManager2.Localization;
+import gigabit101.AdvancedSystemManager2.lib.Localization;
 import gigabit101.AdvancedSystemManager2.animation.AnimationController;
 import gigabit101.AdvancedSystemManager2.settings.Settings;
 import gigabit101.AdvancedSystemManager2.tiles.TileEntityManager;

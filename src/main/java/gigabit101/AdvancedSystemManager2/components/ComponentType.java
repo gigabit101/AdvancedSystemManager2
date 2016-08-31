@@ -1,7 +1,7 @@
 package gigabit101.AdvancedSystemManager2.components;
 
 
-import gigabit101.AdvancedSystemManager2.Localization;
+import gigabit101.AdvancedSystemManager2.lib.Localization;
 
 public enum ComponentType {
     TRIGGER(0, Localization.TRIGGER_SHORT, Localization.TRIGGER_LONG,

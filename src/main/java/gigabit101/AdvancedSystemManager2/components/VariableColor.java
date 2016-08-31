@@ -1,7 +1,7 @@
 package gigabit101.AdvancedSystemManager2.components;
 
 
-import gigabit101.AdvancedSystemManager2.Localization;
+import gigabit101.AdvancedSystemManager2.lib.Localization;
 import gigabit101.AdvancedSystemManager2.interfaces.Color;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraftforge.fml.relauncher.Side;

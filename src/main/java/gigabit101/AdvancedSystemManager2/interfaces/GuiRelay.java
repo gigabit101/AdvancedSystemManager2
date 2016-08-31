@@ -1,7 +1,7 @@
 package gigabit101.AdvancedSystemManager2.interfaces;
 
 import gigabit101.AdvancedSystemManager2.CollisionHelper;
-import gigabit101.AdvancedSystemManager2.Localization;
+import gigabit101.AdvancedSystemManager2.lib.Localization;
 import gigabit101.AdvancedSystemManager2.tiles.TileEntityRelay;
 import gigabit101.AdvancedSystemManager2.blocks.UserPermission;
 import gigabit101.AdvancedSystemManager2.network.DataBitHelper;

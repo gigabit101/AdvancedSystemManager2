@@ -1,7 +1,7 @@
 package gigabit101.AdvancedSystemManager2.components;
 
 
-import gigabit101.AdvancedSystemManager2.Localization;
+import gigabit101.AdvancedSystemManager2.lib.Localization;
 
 public enum ConnectionOption {
     STANDARD_INPUT(Localization.CONNECTION_INPUT, ConnectionType.INPUT),

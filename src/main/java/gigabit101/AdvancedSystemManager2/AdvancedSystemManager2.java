@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.FMLEventChannel;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
-@Mod(modid = ModInfo.MODID, name = "AdvancedSystemManager2", version = GeneratedInfo.version)
+@Mod(modid = ModInfo.MODID, name = "AdvancedSystemManager2", version = ModInfo.VERSION)
 public class AdvancedSystemManager2
 {
     public static FMLEventChannel packetHandler;

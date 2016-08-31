@@ -1,7 +1,7 @@
 package gigabit101.AdvancedSystemManager2.components;
 
 
-import gigabit101.AdvancedSystemManager2.Localization;
+import gigabit101.AdvancedSystemManager2.lib.Localization;
 import gigabit101.AdvancedSystemManager2.blocks.ConnectionBlock;
 import gigabit101.AdvancedSystemManager2.tiles.TileEntityManager;
 import gigabit101.AdvancedSystemManager2.interfaces.GuiManager;

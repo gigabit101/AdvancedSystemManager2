@@ -1,7 +1,7 @@
 package gigabit101.AdvancedSystemManager2.components;
 
 
-import gigabit101.AdvancedSystemManager2.Localization;
+import gigabit101.AdvancedSystemManager2.lib.Localization;
 
 public class ComponentMenuRedstoneStrengthNodes extends ComponentMenuRedstoneStrength {
     public ComponentMenuRedstoneStrengthNodes(FlowComponent parent) {

@@ -1,7 +1,7 @@
 package gigabit101.AdvancedSystemManager2.settings;
 
 import gigabit101.AdvancedSystemManager2.CollisionHelper;
-import gigabit101.AdvancedSystemManager2.Localization;
+import gigabit101.AdvancedSystemManager2.lib.Localization;
 import gigabit101.AdvancedSystemManager2.tiles.TileEntityManager;
 import gigabit101.AdvancedSystemManager2.components.CheckBox;
 import gigabit101.AdvancedSystemManager2.components.CheckBoxList;
