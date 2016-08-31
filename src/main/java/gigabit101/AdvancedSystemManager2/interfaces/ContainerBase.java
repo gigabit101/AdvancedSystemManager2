@@ -7,12 +7,13 @@ import net.minecraft.inventory.IContainerListener;
 
 import java.util.List;
 
-public abstract class ContainerBase extends Container {
+public abstract class ContainerBase extends Container
+{
     private ITileEntityInterface te;
     private InventoryPlayer player;
 
-
-    protected ContainerBase(ITileEntityInterface te, InventoryPlayer player) {
+    protected ContainerBase(ITileEntityInterface te, InventoryPlayer player)
+    {
         this.te = te;
         this.player = player;
     }

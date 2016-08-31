@@ -3,6 +3,7 @@ package gigabit101.AdvancedSystemManager2.blocks;
 import gigabit101.AdvancedSystemManager2.AdvancedSystemManager2;
 import gigabit101.AdvancedSystemManager2.GeneratedInfo;
 import gigabit101.AdvancedSystemManager2.init.ModBlocks;
+import gigabit101.AdvancedSystemManager2.lib.ModInfo;
 import gigabit101.AdvancedSystemManager2.tiles.TileEntityManager;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
@@ -28,7 +29,7 @@ public class BlockManager extends BlockContainer {
     public BlockManager() {
         super(Material.IRON);
 
-        setUnlocalizedName(AdvancedSystemManager2.UNLOCALIZED_START + ModBlocks.MANAGER_UNLOCALIZED_NAME);
+        setUnlocalizedName(ModInfo.UNLOCALIZED_START + ModBlocks.MANAGER_UNLOCALIZED_NAME);
         setSoundType(SoundType.METAL);
         setCreativeTab(ModBlocks.creativeTab);
         setHardness(2F);

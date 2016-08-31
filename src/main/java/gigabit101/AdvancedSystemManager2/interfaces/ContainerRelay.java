@@ -7,17 +7,19 @@ import net.minecraft.entity.player.InventoryPlayer;
 
 import java.util.List;
 
-public class ContainerRelay extends ContainerBase {
-
+public class ContainerRelay extends ContainerBase
+{
     private TileEntityRelay relay;
 
-    public ContainerRelay(TileEntityRelay relay, InventoryPlayer player) {
+    public ContainerRelay(TileEntityRelay relay, InventoryPlayer player)
+    {
         super(relay, player);
         this.relay = relay;
     }
 
     @Override
-    public boolean canInteractWith(EntityPlayer entityplayer) {
+    public boolean canInteractWith(EntityPlayer entityplayer)
+    {
         return entityplayer.getDistanceSq(relay.getPos().getX(), relay.getPos().getY(), relay.getPos().getZ()) <= 64;
     }
 

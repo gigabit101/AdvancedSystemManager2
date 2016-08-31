@@ -1,7 +1,7 @@
 package gigabit101.AdvancedSystemManager2.blocks;
 
-import gigabit101.AdvancedSystemManager2.AdvancedSystemManager2;
 import gigabit101.AdvancedSystemManager2.init.ModBlocks;
+import gigabit101.AdvancedSystemManager2.lib.ModInfo;
 import gigabit101.AdvancedSystemManager2.tiles.TileEntityBUD;
 import gigabit101.AdvancedSystemManager2.tiles.TileEntityCluster;
 import net.minecraft.block.BlockContainer;
@@ -14,12 +14,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockCableBUD extends BlockContainer {
-    public BlockCableBUD() {
+public class BlockCableBUD extends BlockContainer
+{
+    public BlockCableBUD()
+    {
         super(Material.IRON);
         setCreativeTab(ModBlocks.creativeTab);
         setSoundType(SoundType.METAL);
-        setUnlocalizedName(AdvancedSystemManager2.UNLOCALIZED_START + ModBlocks.CABLE_BUD_UNLOCALIZED_NAME);
+        setUnlocalizedName(ModInfo.UNLOCALIZED_START + ModBlocks.CABLE_BUD_UNLOCALIZED_NAME);
         setHardness(1.2F);
     }
 
@@ -34,9 +36,11 @@ public class BlockCableBUD extends BlockContainer {
     }
 
     @Override
-    public void onNeighborChange(IBlockAccess world, BlockPos pos, BlockPos neighbor) {
+    public void onNeighborChange(IBlockAccess world, BlockPos pos, BlockPos neighbor)
+    {
         TileEntityBUD bud = TileEntityCluster.getTileEntity(TileEntityBUD.class, world, pos);
-        if (bud != null) {
+        if (bud != null)
+        {
             bud.onTrigger();
         }
     }

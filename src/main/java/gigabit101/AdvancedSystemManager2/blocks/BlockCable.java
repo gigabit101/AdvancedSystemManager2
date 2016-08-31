@@ -1,8 +1,7 @@
 package gigabit101.AdvancedSystemManager2.blocks;
 
-
-import gigabit101.AdvancedSystemManager2.AdvancedSystemManager2;
 import gigabit101.AdvancedSystemManager2.init.ModBlocks;
+import gigabit101.AdvancedSystemManager2.lib.ModInfo;
 import gigabit101.AdvancedSystemManager2.tiles.TileEntityManager;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -23,7 +22,7 @@ public class BlockCable extends Block {
         super(Material.IRON);
         setCreativeTab(ModBlocks.creativeTab);
         setSoundType(SoundType.METAL);
-        setUnlocalizedName(AdvancedSystemManager2.UNLOCALIZED_START + ModBlocks.CABLE_UNLOCALIZED_NAME);
+        setUnlocalizedName(ModInfo.UNLOCALIZED_START + ModBlocks.CABLE_UNLOCALIZED_NAME);
         setHardness(0.4F);
     }
 

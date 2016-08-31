@@ -1,6 +1,7 @@
 package gigabit101.AdvancedSystemManager2;
 
 
+import gigabit101.AdvancedSystemManager2.lib.ModInfo;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.text.translation.I18n;
 
@@ -377,7 +378,7 @@ public enum Localization
     }
 
     public String toString() {
-        return I18n.translateToLocal("gui." + AdvancedSystemManager2.UNLOCALIZED_START + name);
+        return I18n.translateToLocal("gui." + ModInfo.UNLOCALIZED_START + name);
     }
 
     public static Localization getDirectionLocalization(EnumFacing facing)

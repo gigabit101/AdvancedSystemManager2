@@ -1,14 +1,12 @@
 package gigabit101.AdvancedSystemManager2.interfaces;
 
-
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-
-public interface IAdvancedTooltip {
-
+public interface IAdvancedTooltip
+{
     @SideOnly(Side.CLIENT)
     int getMinWidth(GuiBase gui);
     @SideOnly(Side.CLIENT)

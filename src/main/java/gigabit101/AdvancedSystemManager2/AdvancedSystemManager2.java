@@ -3,6 +3,7 @@ package gigabit101.AdvancedSystemManager2;
 import gigabit101.AdvancedSystemManager2.init.ModBlocks;
 import gigabit101.AdvancedSystemManager2.components.ModItemHelper;
 import gigabit101.AdvancedSystemManager2.init.ModRecipes;
+import gigabit101.AdvancedSystemManager2.lib.ModInfo;
 import gigabit101.AdvancedSystemManager2.network.FileHelper;
 import gigabit101.AdvancedSystemManager2.network.PacketEventHandler;
 import gigabit101.AdvancedSystemManager2.proxy.CommonProxy;
@@ -15,27 +16,22 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.FMLEventChannel;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
-@Mod(modid = AdvancedSystemManager2.MODID, name = "AdvancedSystemManager2", version = GeneratedInfo.version)
+@Mod(modid = ModInfo.MODID, name = "AdvancedSystemManager2", version = GeneratedInfo.version)
 public class AdvancedSystemManager2
 {
-    public static final String MODID = "AdvancedSystemManager2";
-    public static final String RESOURCE_LOCATION = "advancedsystemmanager2";
-    public static final String CHANNEL = "AdvancedSystemManager2";
-    public static final String UNLOCALIZED_START = "afm.";
-
     public static FMLEventChannel packetHandler;
 
-    @SidedProxy(clientSide = "gigabit101.AdvancedSystemManager2.proxy.ClientProxy", serverSide = " gigabit101.AdvancedSystemManager2.proxy.CommonProxy")
+    @SidedProxy(clientSide = ModInfo.CLIENT_PROXY_LOC, serverSide = ModInfo.COMMON_PROXY_LOC)
     public static CommonProxy proxy;
 
-    @Mod.Instance(MODID)
+    @Mod.Instance(ModInfo.MODID)
     public static AdvancedSystemManager2 instance;
 
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
-        packetHandler = NetworkRegistry.INSTANCE.newEventDrivenChannel(CHANNEL);
+        packetHandler = NetworkRegistry.INSTANCE.newEventDrivenChannel(ModInfo.CHANNEL);
         ModBlocks.init();
         proxy.preInit();
         FileHelper.setConfigDir(event.getModConfigurationDirectory());

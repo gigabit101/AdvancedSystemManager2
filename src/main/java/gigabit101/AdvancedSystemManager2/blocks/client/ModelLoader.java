@@ -1,6 +1,7 @@
 package gigabit101.AdvancedSystemManager2.blocks.client;
 
 import gigabit101.AdvancedSystemManager2.AdvancedSystemManager2;
+import gigabit101.AdvancedSystemManager2.lib.ModInfo;
 import net.minecraft.client.resources.IResourceManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ICustomModelLoader;
@@ -13,7 +14,7 @@ public class ModelLoader implements ICustomModelLoader {
 
     @Override
     public boolean accepts(ResourceLocation modelLocation) {
-        return modelLocation.getResourceDomain().equals(AdvancedSystemManager2.MODID.toLowerCase()) && modelLocation.getResourcePath().startsWith("models/block/builtin/");
+        return modelLocation.getResourceDomain().equals(ModInfo.MODID.toLowerCase()) && modelLocation.getResourcePath().startsWith("models/block/builtin/");
     }
 
     @Override

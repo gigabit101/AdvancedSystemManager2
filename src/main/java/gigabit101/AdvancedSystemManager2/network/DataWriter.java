@@ -2,6 +2,7 @@ package gigabit101.AdvancedSystemManager2.network;
 
 
 import gigabit101.AdvancedSystemManager2.AdvancedSystemManager2;
+import gigabit101.AdvancedSystemManager2.lib.ModInfo;
 import gigabit101.AdvancedSystemManager2.tiles.TileEntityManager;
 import gigabit101.AdvancedSystemManager2.interfaces.ContainerBase;
 import gigabit101.AdvancedSystemManager2.settings.Settings;
@@ -77,7 +78,7 @@ public class DataWriter {
     private FMLProxyPacket createPacket() {
        writeFinalBits();
        PacketBuffer buf = new PacketBuffer(Unpooled.copiedBuffer(((ByteArrayOutputStream)stream).toByteArray()));
-       return new FMLProxyPacket(buf, AdvancedSystemManager2.CHANNEL);
+       return new FMLProxyPacket(buf, ModInfo.CHANNEL);
     }
 
     void sendPlayerPackets(double x, double y, double z, double r, int dimension){

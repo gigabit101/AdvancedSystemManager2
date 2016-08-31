@@ -2,6 +2,7 @@ package gigabit101.AdvancedSystemManager2.interfaces;
 
 
 import gigabit101.AdvancedSystemManager2.AdvancedSystemManager2;
+import gigabit101.AdvancedSystemManager2.lib.ModInfo;
 import gigabit101.AdvancedSystemManager2.tiles.TileEntityClusterElement;
 import gigabit101.AdvancedSystemManager2.settings.Settings;
 import net.minecraft.block.Block;
@@ -85,7 +86,7 @@ public abstract class GuiBase extends GuiAntiNEI {
     }
 
     public static ResourceLocation registerTexture(String name) {
-        return new ResourceLocation(AdvancedSystemManager2.RESOURCE_LOCATION, "textures/gui/" +  name + ".png");
+        return new ResourceLocation(ModInfo.RESOURCE_LOCATION, "textures/gui/" +  name + ".png");
     }
 
     public void drawString(String str, int x, int y, float mult, int color) {

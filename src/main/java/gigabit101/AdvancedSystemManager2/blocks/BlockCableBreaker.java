@@ -1,8 +1,7 @@
 package gigabit101.AdvancedSystemManager2.blocks;
 
-
-import gigabit101.AdvancedSystemManager2.AdvancedSystemManager2;
 import gigabit101.AdvancedSystemManager2.init.ModBlocks;
+import gigabit101.AdvancedSystemManager2.lib.ModInfo;
 import gigabit101.AdvancedSystemManager2.tiles.TileEntityBreaker;
 import gigabit101.AdvancedSystemManager2.tiles.TileEntityCluster;
 import net.minecraft.block.BlockContainer;
@@ -25,12 +24,14 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 //This is indeed not a subclass to the cable, you can't relay signals through this block
-public class BlockCableBreaker extends BlockContainer {
-    public BlockCableBreaker() {
+public class BlockCableBreaker extends BlockContainer
+{
+    public BlockCableBreaker()
+    {
         super(Material.IRON);
         setCreativeTab(ModBlocks.creativeTab);
         setSoundType(SoundType.METAL);
-        setUnlocalizedName(AdvancedSystemManager2.UNLOCALIZED_START + ModBlocks.CABLE_BREAKER_UNLOCALIZED_NAME);
+        setUnlocalizedName(ModInfo.UNLOCALIZED_START + ModBlocks.CABLE_BREAKER_UNLOCALIZED_NAME);
         setHardness(1.2F);
     }
 
@@ -52,7 +53,8 @@ public class BlockCableBreaker extends BlockContainer {
     }
 
     @Override
-    public IBlockState getStateFromMeta(int meta) {
+    public IBlockState getStateFromMeta(int meta)
+    {
         return getDefaultState().withProperty(FRONT, getSide(meta)).withProperty(DIRECTION, getSide(meta));
     }
 
@@ -62,9 +64,11 @@ public class BlockCableBreaker extends BlockContainer {
     }
 
     @Override
-    public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+    public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos)
+    {
         TileEntityBreaker entityBreaker = (TileEntityBreaker) worldIn.getTileEntity(pos);
-        if (entityBreaker != null && entityBreaker.getPlaceDirection() != null) {
+        if (entityBreaker != null && entityBreaker.getPlaceDirection() != null)
+        {
             return state.withProperty(DIRECTION, entityBreaker.getPlaceDirection()).withProperty(FRONT, getSide(getMetaFromState(state)));
         }
         return state.withProperty(DIRECTION, getSide(getMetaFromState(state))).withProperty(FRONT, getSide(getMetaFromState(state)));
@@ -77,11 +81,13 @@ public class BlockCableBreaker extends BlockContainer {
 
     @Override
     public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase entity, ItemStack item) {
-        if (!world.isRemote) {
+        if (!world.isRemote)
+        {
             EnumFacing facing = BlockPistonBase.getFacingFromEntity(pos, entity);
 
             TileEntityBreaker breaker = TileEntityCluster.getTileEntity(TileEntityBreaker.class, world, pos);
-            if (breaker != null) {
+            if (breaker != null)
+            {
                 breaker.setPlaceDirection(facing);
                 breaker.setMetaData(facing.getIndex());
             }
@@ -89,18 +95,18 @@ public class BlockCableBreaker extends BlockContainer {
     }
 
     @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-
-        if (player.isSneaking()) {
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
+    {
+        if (player.isSneaking())
+        {
             side = side.getOpposite();
         }
-
         TileEntityBreaker breaker = TileEntityCluster.getTileEntity(TileEntityBreaker.class, world, pos);
-        if (breaker != null && !breaker.isBlocked()) {
+        if (breaker != null && !breaker.isBlocked())
+        {
             breaker.setPlaceDirection(side);
             return true;
         }
-
         return false;
     }
 }
