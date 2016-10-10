@@ -28,7 +28,7 @@ archivesBaseName = "AdvancedSystemManager2"
 
 version = "1.10.2-1.0.0"
 minecraft {
-    version = "1.10.2-12.18.1.2050"
+    version = "1.10.2-12.18.2.2099"
     runDir = "run"
     mappings = 'snapshot_20160810'
 }

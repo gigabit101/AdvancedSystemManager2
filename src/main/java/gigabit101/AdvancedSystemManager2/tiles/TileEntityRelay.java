@@ -31,12 +31,15 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
 import java.util.ArrayList;
 import java.util.EnumSet;
@@ -1062,5 +1065,20 @@ public class TileEntityRelay extends TileEntityClusterElement implements IInvent
     protected EnumSet<ClusterMethodRegistration> getRegistrations()
     {
         return EnumSet.of(ClusterMethodRegistration.ON_BLOCK_PLACED_BY, ClusterMethodRegistration.ON_BLOCK_ACTIVATED);
+    }
+
+    /**
+     * Capabilities
+     */
+
+    @Override
+    public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+        int[] temp = getSlotsForFace(facing);
+        return (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && temp != null && temp.length > 0) || super.hasCapability(capability, facing);
+    }
+
+    @Override
+    public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
+        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? (T) new SidedInvWrapper(this, facing) : super.getCapability(capability, facing);
     }
 }
